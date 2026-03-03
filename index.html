@@ -3,1028 +3,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - BUT Informatique Data IA</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #667eea;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #764ba2;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem 2rem;
-        }
-
-        .page {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: white;
-            border-radius: 20px;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: #666;
-        }
-
-        .section {
-            background: white;
-            padding: 3rem;
-            margin-bottom: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .section h2 {
-            color: #667eea;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            border-bottom: 3px solid #764ba2;
-            padding-bottom: 0.5rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            color: white;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .tech-category {
-            margin-bottom: 3rem;
-        }
-
-        .tech-category h3 {
-            color: #764ba2;
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .tech-category-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: flex-start;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-        }
-
-        .competence-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
-            margin-bottom: 1.5rem;
-        }
-
-        .competence-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .project-detail {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .project-detail h2 {
-            color: #667eea;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
-        }
-
-        .project-section {
-            margin-bottom: 2rem;
-        }
-
-        .project-section h3 {
-            color: #764ba2;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .tech-badge {
-            background: #667eea;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .skill-level-container {
-            margin-top: 2rem;
-        }
-
-        .skill-level-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-level-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-level-name {
-            font-weight: 600;
-            color: #333;
-            font-size: 1.1rem;
-        }
-
-        .skill-level-percentage {
-            color: #667eea;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .skill-level-bar {
-            width: 100%;
-            height: 25px;
-            background: #e9ecef;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skill-level-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            width: 0;
-            transition: width 1.5s ease-out;
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
-        }
-
-        .formation-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            border-left: 5px solid #764ba2;
-        }
-
-        .formation-card h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .formation-card .period {
-            color: #764ba2;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: transform 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-        }
-
-        .back-btn {
-            margin-bottom: 2rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-item strong {
-            color: #667eea;
-            min-width: 100px;
-        }
-    </style>
+    <title>Basile CESCHIA — Portfolio</title>
+    <meta name="description" content="Portfolio de Basile CESCHIA, étudiant en informatique spécialisé en Data, Intelligence Artificielle et Développement Web.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#" onclick="showPage('accueil')">Accueil</a></li>
-            <li><a href="#" onclick="showPage('projets')">Projets</a></li>
-            <li><a href="#" onclick="showPage('competences')">Compétences</a></li>
-            <li><a href="#" onclick="showPage('formations')">Formations</a></li>
-            <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="#hero" class="nav-logo">B<span>.</span>C</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" class="active">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#experience">Expérience</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#education">Formation</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
 
+<!-- HERO -->
+<section id="hero">
     <div class="container">
-        <!-- Page Accueil -->
-        <div id="accueil" class="page active">
-            <div class="hero">
-                <h1>Basile CESCHIA</h1>
-                <p>Étudiant BUT Informatique - 3ème année</p>
-                <p>Parcours Data & Intelligence Artificielle</p>
-            </div>
-
-            <div class="section">
-                <h2>À propos</h2>
-                <p>Passionné par la data science et l'intelligence artificielle, 
-                    je suis actuellement en troisième année de BUT Informatique avec 
-                    une spécialisation en Data et IA. J'envisage une poursuite d'études en master spécialisé dans ces domaines 
-                    ou en école d'ingénieurs.</p>
-            </div>
-
-            <div class="section">
-                <h2>Projets phares</h2>
-                <div class="grid">
-                    <div class="card" onclick="showPage('projet1')">
-                        <h3>🎵 Système de recommandations de musique</h3>
-                        <p>Développement d'un algorithme de recommandation 
-                            utilisant des modèles user-based et item-based pour suggérer 
-                            des musiques personnalisées.</p>
-                    </div>
-                    <div class="card" onclick="showPage('projet2')">
-                        <h3>🌐 Site web dynamique</h3>
-                        <p>Conception, développement et hébergement 
-                            d'un site web dynamique complet avec gestion de 
-                            base de données et interface utilisateur responsive.</p>
-                    </div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    Disponible pour un stage — Dès le 23 Mars
+                </div>
+                <h1 class="hero-name">
+                    Basile<br><span class="accent">CESCHIA</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Étudiant en informatique passionné par la <strong>Data</strong>, 
+                    l'<strong>Intelligence Artificielle</strong> et le <strong>Développement Web</strong>.
+                    En recherche d'un stage de 14 semaines.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">📩 Me contacter</a>
+                    <a href="#projects" class="btn btn-outline">Voir mes projets →</a>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>Technologies maîtrisées</h2>
-
-                <div class="tech-category">
-                    <h3>Bases de données</h3>
-                    <div class="tech-category-content">
-                        <div class="skill-tag">PostgreSQL</div>
-                        <div class="skill-tag">MySQL</div>
-                        <div class="skill-tag">MongoDB</div>
-                        <div class="skill-tag">Redis</div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div style="text-align:center; margin-bottom:1rem;">
+                        <span style="font-size:2.5rem;">👨‍💻</span>
                     </div>
-                </div>
-
-                <div class="tech-category">
-                    <h3>Data Science & IA</h3>
-                    <div class="tech-category-content">
-                        <div class="skill-tag">Scikit-learn</div>
-                        <div class="skill-tag">Pandas</div>
-                        <div class="skill-tag">NumPy</div>
-                        <div class="skill-tag">Matplotlib</div>
-                        <div class="skill-tag">PyTorch</div>
-                    </div>
-                </div>
-                
-                <div class="tech-category">
-                    <h3>Langages de programmation</h3>
-                    <div class="tech-category-content">
-                        <div class="skill-tag">Python</div>
-                        <div class="skill-tag">Java</div>
-                        <div class="skill-tag">JavaScript</div>
-                        <div class="skill-tag">C</div>
-                        <div class="skill-tag">SQL</div>
-                        <div class="skill-tag">Bash</div>
-                    </div>
-                </div>
-
-                <div class="tech-category">
-                    <h3>Web & Frontend</h3>
-                    <div class="tech-category-content">
-                        <div class="skill-tag">HTML</div>
-                        <div class="skill-tag">CSS</div>
-                        <div class="skill-tag">React</div>
-                        <div class="skill-tag">CSHTML</div>
-                        <div class="skill-tag">Bootstrap</div>
-                        <div class="skill-tag">Tailwind CSS</div>
-                    </div>
-                </div>
-
-
-                <div class="tech-category">
-                    <h3>Outils & DevOps</h3>
-                    <div class="tech-category-content">
-                        <div class="skill-tag">Git</div>
-                        <div class="skill-tag">Docker</div>
-                        <div class="skill-tag">Linux</div>
-                        <div class="skill-tag">Nginx</div>
-                        <div class="skill-tag">VS Code</div>
-                        <div class="skill-tag">Azure</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Compétences du BUT Informatique</h2>
-                <div class="grid">
-                    <div class="card" onclick="showPage('comp1')">
-                        <h3>Réaliser</h3>
-                    </div>
-                    <div class="card" onclick="showPage('comp2')">
-                        <h3>Optimiser</h3>
-                    </div>
-                    <div class="card" onclick="showPage('comp3')">
-                        <h3>Administrer</h3>
-                    </div>
-                    <div class="card" onclick="showPage('comp4')">
-                        <h3>Gérer</h3>
-                    </div>
-                    <div class="card" onclick="showPage('comp5')">
-                        <h3>Conduire</h3>
-                    </div>
-                    <div class="card" onclick="showPage('comp6')">
-                        <h3>Collaborer</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Page Projets -->
-        <div id="projets" class="page">
-            <div class="section">
-                <h2>Mes Projets</h2>
-                <div class="grid">
-                    <div class="card" onclick="showPage('projet1')">
-                        <h3>🎵 Système de recommandations de musique</h3>
-                        <p>Développement d'un algorithme de recommandation 
-                            utilisant des modèles user-based et item-based pour suggérer 
-                            des musiques personnalisées.</p>
-                    </div>
-                    <div class="card" onclick="showPage('projet2')">
-                        <h3>🌐 Site web dynamique</h3>
-                        <p>Conception, développement et hébergement 
-                            d'un site web dynamique complet avec gestion de 
-                            base de données et interface utilisateur responsive.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Projet 1 Détail -->
-        <div id="projet1" class="page">
-            <button class="btn back-btn" onclick="showPage('projets')">← Retour aux projets</button>
-            <div class="project-detail">
-                <h2>Système de recommandations de musique</h2>
-                
-                <div class="project-section">
-                    <h3>Description</h3>
-                    <p>Création, analyse et mise en place d'une base de données adaptés au projet puis développement d'un système de recommandation musicale intelligent utilisant des algorithmes de machine learning. Le système analyse les préférences utilisateur, les historiques d'écoute et les caractéristiques des morceaux pour proposer des suggestions personnalisées.</p>
-                </div>
-
-                <div class="project-section">
-                    <h3>Objectifs</h3>
-                    <ul>
-                        <li>Créer un algorithme de recommandation basé sur des données utilisateur ainsi qu'un large jeu de données</li>
-                        <li>Analyser les features audio des morceaux (tempo, tonalité, énergie)</li>
-                        <li>Développer une interface utilisateur intuitive</li>
-                    </ul>
-                </div>
-
-                <div class="project-section">
-                    <h3>Technologies utilisées & Niveau d'utilisation</h3>
-                    <div class="skill-level-container">
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">Python</span>
-                                <span class="skill-level-percentage">95%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="95"></div>
-                            </div>
+                    <div style="text-align:center; margin-bottom:0.5rem; font-weight:700; font-size:1.1rem;">BUT Informatique</div>
+                    <div style="text-align:center; color:var(--text-muted); font-size:0.9rem;">IUT de Lannion — 3ème année</div>
+                    <div style="text-align:center; color:var(--accent); font-size:0.85rem; margin-top:0.3rem;">Parcours Data & Intelligence Artificielle</div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">3+</span>
+                            <span class="stat-label">Projets</span>
                         </div>
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">Scikit-learn</span>
-                                <span class="skill-level-percentage">80%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="80"></div>
-                            </div>
+                        <div class="stat-item">
+                            <span class="stat-value">1</span>
+                            <span class="stat-label">Stage pro</span>
                         </div>
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">Pandas</span>
-                                <span class="skill-level-percentage">80%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="80"></div>
-                            </div>
+                        <div class="stat-item">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Langues</span>
                         </div>
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">NumPy</span>
-                                <span class="skill-level-percentage">60%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="60"></div>
-                            </div>
+                        <div class="stat-item">
+                            <span class="stat-value">10+</span>
+                            <span class="stat-label">Technologies</span>
                         </div>
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">PostgreSQL</span>
-                                <span class="skill-level-percentage">50%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="50"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <h3>Méthodologie</h3>
-                    <p>Le projet a été réalisé avec des sprints de trois semaines et en équipe. 
-                        Tout d'abord par la collecte, l'analyse et le nettoyage des données, 
-                        puis le développement de plusieurs modèles de recommandation 
-                        (user-based, item-based, hybrid) avant de les comparer et de les rendres plus performant.</p>
-                </div>
-
-                <div class="project-section">
-                    <h3>Résultats</h3>
-                    <ul>
-                        <li>Base de données de 100 000 morceaux analysés</li>
-                        <li>Temps de réponse moyen de 3 secondes</li>
-                        <li>Les modèles sont optimisés et performants</li>
-                        <li>Interface responsive testée sur différents appareils (à venir)</li>
-                    </ul>
-                </div>
-
-                <div class="project-section">
-                    <h3>Compétences mobilisées</h3>
-                    <p>Réaliser, Optimiser, Administrer, Collaborer</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Projet 2 Détail -->
-        <div id="projet2" class="page">
-            <button class="btn back-btn" onclick="showPage('projets')">← Retour aux projets</button>
-            <div class="project-detail">
-                <h2>Développement et hébergement d'un site web dynamique</h2>
-                
-                <div class="project-section">
-                    <h3>Description</h3>
-                    <p>Conception et développement complet 
-                        d'un site web dynamique avec système 
-                        d'authentification, gestion de contenu, base de données 
-                        relationnelle 
-                        et interface d'administration. Le projet 
-                        inclut la mise en place de l'infrastructure 
-                        d'hébergement et la configuration des services nécessaires.
-                        </p>
-                </div>
-
-                <div class="project-section">
-                    <h3>Objectifs</h3>
-                    <ul>
-                        <li>Créer une application web moderne et responsive</li>
-                        <li>Implémenter un système d'authentification sécurisé</li>
-                        <li>Implémenter un système d'administration</li>
-                    </ul>
-                </div>
-
-                <div class="project-section">
-                    <h3>Technologies utilisées & Niveau d'utilisation</h3>
-                    <div class="skill-level-container">
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">HTML/CSS</span>
-                                <span class="skill-level-percentage">95%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="95"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">JavaScript</span>
-                                <span class="skill-level-percentage">90%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="90"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">PostgreSQL</span>
-                                <span class="skill-level-percentage">80%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">Docker</span>
-                                <span class="skill-level-percentage">75%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-level-item">
-                            <div class="skill-level-header">
-                                <span class="skill-level-name">MySQL</span>
-                                <span class="skill-level-percentage">70%</span>
-                            </div>
-                            <div class="skill-level-bar">
-                                <div class="skill-level-fill" data-width="70"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <h3>Architecture</h3>
-                    <p>Lors de ce projet la méthodologie Agile a été utilisée pour structurer le développement.
-                        Au cours de sprint avec un scrum master désigné et un product owner pour définir les besoins.
-                    </p>
-                </div>
-
-                <div class="project-section">
-                    <h3>Fonctionnalités principales</h3>
-                    <ul>
-                        <li>Système d'authentification avec refresh tokens</li>
-                        <li>CRUD complet pour la gestion de contenu</li>
-                        <li>Interface d'administration avec tableaux de bord</li>
-                        <li>Upload et traitement de fichiers</li>
-                        <li>Système de recherche et de filtres avancés</li>
-                        <li>Responsive design adaptatif</li>
-                    </ul>
-                </div>
-
-                <div class="project-section">
-                    <h3>Résultats</h3>
-                    <ul>
-                        <li>Temps de chargement < 2 secondes</li>
-                        <li>Interface responsive</li>
-                        <li>Sécurité validée</li>
-                    </ul>
-                </div>
-
-                <div class="project-section">
-                    <h3>Compétences mobilisées</h3>
-                    <p>Réaliser, Optimiser, Administrer, Gérer, Collaborer</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Page Compétences -->
-        <div id="competences" class="page">
-            <div class="section">
-                <h2>Les 6 Compétences du BUT Informatique</h2>
-                <div class="competence-card">
-                    <h3 onclick="showPage('comp1')" style="cursor: pointer; color: #667eea;">Réaliser →</h3>
-                    <p>Développer des applications informatiques simples</p>
-                </div>
-                <div class="competence-card">
-                    <h3 onclick="showPage('comp2')" style="cursor: pointer; color: #667eea;">Optimiser →</h3>
-                    <p>Optimiser des applications informatiques</p>
-                </div>
-                <div class="competence-card">
-                    <h3 onclick="showPage('comp3')" style="cursor: pointer; color: #667eea;">Administrer →</h3>
-                    <p>Administrer des systèmes informatiques communicants complexes</p>
-                </div>
-                <div class="competence-card">
-                    <h3 onclick="showPage('comp4')" style="cursor: pointer; color: #667eea;">Gérer →</h3>
-                    <p>Gérer des données de l'information</p>
-                </div>
-                <div class="competence-card">
-                    <h3 onclick="showPage('comp5')" style="cursor: pointer; color: #667eea;">Conduire →</h3>
-                    <p>Conduire un projet</p>
-                </div>
-                <div class="competence-card">
-                    <h3 onclick="showPage('comp6')" style="cursor: pointer; color: #667eea;">Collaborer →</h3>
-                    <p>Travailler dans une équipe informatique</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Compétences détaillées -->
-        <div id="comp1" class="page">
-            <button class="btn back-btn" onclick="showPage('competences')">← Retour aux compétences</button>
-            <div class="section">
-                <h2>Compétence 1 : Réaliser</h2>
-                <p><strong>Développer des applications informatiques simples</strong></p>
-                
-                <h3 style="margin-top: 2rem; color: #764ba2;">Apprentissages critiques</h3>
-                <ul style="margin-left: 2rem; margin-top: 1rem;">
-                    <li>Implémenter des conceptions simples</li>
-                    <li>Élaborer des conceptions simples</li>
-                    <li>Faire des essais et évaluer leurs résultats en regard des spécifications</li>
-                    <li>Développer des interfaces utilisateurs</li>
-                </ul>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Situations</h3>
-                <div class="competence-card" style="margin-top: 1rem;">
-                    <h4>Projet : Système de recommandation musicale</h4>
-                    <p>Conception et développement d'un algorithme de recommandation musicale en Python. 
-                        Puis développement de l'interface 
-                        utilisateur pour permettre aux utilisateurs d'interagir avec le système.</p>
-                </div>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Technologies mobilisées</h3>
-                <div class="tech-stack" style="margin-top: 1rem;">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Java</span>
-                    <span class="tech-badge">JavaScript</span>
-                    <span class="tech-badge">React</span>
-                    <span class="tech-badge">HTML/CSS</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="comp2" class="page">
-            <button class="btn back-btn" onclick="showPage('competences')">← Retour aux compétences</button>
-            <div class="section">
-                <h2>Compétence 2 : Optimiser</h2>
-                <p><strong>Optimiser des applications informatiques</strong></p>
-                
-                <h3 style="margin-top: 2rem; color: #764ba2;">Apprentissages critiques</h3>
-                <ul style="margin-left: 2rem; margin-top: 1rem;">
-                    <li>Analyser un problème avec méthode</li>
-                    <li>Comparer des algorithmes pour des problèmes classiques</li>
-                    <li>Formaliser et modéliser des situations complexes</li>
-                    <li>Sélectionner les algorithmes adéquats pour répondre à un problème donné</li>
-                </ul>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Situations</h3>
-                <div class="competence-card" style="margin-top: 1rem;">
-                    <h4>Optimisation du système de recommandation</h4>
-                    <p>Analyse des performances d'algorithmes de 
-                        recommandation et l'optimisation du temps de réponse et des ressources consommés afin de rendre 
-                        le système plus performant.</p>
-                </div>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Technologies mobilisées</h3>
-                <div class="tech-stack" style="margin-top: 1rem;">
-                    <span class="tech-badge">Optimisation SQL</span>
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Indexation</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="comp3" class="page">
-            <button class="btn back-btn" onclick="showPage('competences')">← Retour aux compétences</button>
-            <div class="section">
-                <h2>Compétence 3 : Administrer</h2>
-                <p><strong>Administrer des systèmes informatiques communicants complexes</strong></p>
-                
-                <h3 style="margin-top: 2rem; color: #764ba2;">Apprentissages critiques</h3>
-                <ul style="margin-left: 2rem; margin-top: 1rem;">
-                    <li>Installer et configurer un poste de travail</li>
-                    <li>Déployer des services dans une architecture réseau</li>
-                    <li>Sécuriser les services et données d'un système</li>
-                    <li>Administrer des bases de données</li>
-                </ul>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Situations</h3>
-                <div class="competence-card" style="margin-top: 1rem;">
-                    <h4>Déploiement du site web dynamique</h4>
-                    <p>Configuration et déploiement de l'application complète, 
-                        en mettant en place Docker pour la conteneurisation, 
-                        Nginx comme reverse proxy, et en configurant les certificats SSL. 
-                        Configuration de la base de données.</p>
-                </div>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Technologies mobilisées</h3>
-                <div class="tech-stack" style="margin-top: 1rem;">
-                    <span class="tech-badge">Docker</span>
-                    <span class="tech-badge">Linux</span>
-                    <span class="tech-badge">Nginx</span>
-                    <span class="tech-badge">PostgreSQL</span>
-                    <span class="tech-badge">SSL/TLS</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="comp4" class="page">
-            <button class="btn back-btn" onclick="showPage('competences')">← Retour aux compétences</button>
-            <div class="section">
-                <h2>Compétence 4 : Gérer</h2>
-                <p><strong>Gérer des données de l'information</strong></p>
-                
-                <h3 style="margin-top: 2rem; color: #764ba2;">Apprentissages critiques</h3>
-                <ul style="margin-left: 2rem; margin-top: 1rem;">
-                    <li>Concevoir et mettre en place des bases de données</li>
-                    <li>Optimiser les modèles de données et les requêtes</li>
-                    <li>Assurer la sécurité des données</li>
-                    <li>Manipuler des données hétérogènes</li>
-                </ul>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Situations</h3>
-                <div class="competence-card" style="margin-top: 1rem;">
-                    <h4>Gestion des données musicales</h4>
-                    <p>Conception du schéma de base de données ainsi que son peuplement pour stocker les informations
-                        des utilisateurs, leurs historiques d'écoute et toutes les données utiles. 
-                        Nettoyage et préparation des données, 
-                        géré l'ETL pour l'importation de données, et optimisé les 
-                        requêtes pour améliorer les performances.
-                        Création de vues et triggers pour optimiser la bdd.</p>
-                </div>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Technologies mobilisées</h3>
-                <div class="tech-stack" style="margin-top: 1rem;">
-                    <span class="tech-badge">PostgreSQL</span>
-                    <span class="tech-badge">SQL</span>
-                    <span class="tech-badge">Pandas</span>
-                    <span class="tech-badge">JSON</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="comp5" class="page">
-            <button class="btn back-btn" onclick="showPage('competences')">← Retour aux compétences</button>
-            <div class="section">
-                <h2>Compétence 5 : Conduire</h2>
-                <p><strong>Conduire un projet</strong></p>
-                
-                <h3 style="margin-top: 2rem; color: #764ba2;">Apprentissages critiques</h3>
-                <ul style="margin-left: 2rem; margin-top: 1rem;">
-                    <li>Identifier les besoins métiers des clients et utilisateurs</li>
-                    <li>Appliquer une démarche de suivi de projet</li>
-                    <li>Mettre en œuvre des méthodes agiles</li>
-                    <li>Respecter les contraintes de temps</li>
-                </ul>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Situations</h3>
-                <div class="competence-card" style="margin-top: 1rem;">
-                    <h4>Conduite du projet site web</h4>
-                    <p>Conduite/participation au projet de développement du 
-                        site web en utilisant la méthodologie Scrum. 
-                        Organisation des sprints, planifications des tâches, 
-                        géré le backlog et assuré le suivi avec des daily meetings. 
-                        Respect des délais et cahier des charges.</p>
-                </div>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Technologies mobilisées</h3>
-                <div class="tech-stack" style="margin-top: 1rem;">
-                    <span class="tech-badge">Scrum</span>
-                    <span class="tech-badge">Jira</span>
-                    <span class="tech-badge">Git/GitHub</span>
-                    <span class="tech-badge">Gantt</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="comp6" class="page">
-            <button class="btn back-btn" onclick="showPage('competences')">← Retour aux compétences</button>
-            <div class="section">
-                <h2>Compétence 6 : Collaborer</h2>
-                <p><strong>Travailler dans une équipe informatique</strong></p>
-                
-                <h3 style="margin-top: 2rem; color: #764ba2;">Apprentissages critiques</h3>
-                <ul style="margin-left: 2rem; margin-top: 1rem;">
-                    <li>Identifier ses aptitudes pour travailler dans une équipe</li>
-                    <li>Situer son rôle et ses missions au sein d'une équipe</li>
-                    <li>Manager une équipe informatique</li>
-                    <li>Appliquer une démarche pour intégrer une équipe</li>
-                </ul>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Situations</h3>
-                <div class="competence-card" style="margin-top: 1rem;">
-                    <h4>Travail en équipe sur projets</h4>
-                    <p>Collaboration au sein d'une équipe de 7 personnes sur le projet de site web dynamique. 
-                        Utilisation de Git pour la gestion de versions, participation aux code reviews, 
-                        communications efficace via les réunions d'équipe.</p>
-                </div>
-
-                <h3 style="margin-top: 2rem; color: #764ba2;">Technologies mobilisées</h3>
-                <div class="tech-stack" style="margin-top: 1rem;">
-                    <span class="tech-badge">Git</span>
-                    <span class="tech-badge">GitHub</span>
-                    <span class="tech-badge">Code Review</span>
-                    <span class="tech-badge">Documentation</span>
-                    <span class="tech-badge">Teams</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Page Formations -->
-        <div id="formations" class="page">
-            <div class="section">
-                <h2>Formations & Diplômes</h2>
-                
-                <div class="formation-card">
-                    <h3>BUT Informatique - Parcours Data & Intelligence Artificielle / développement d'applications</h3>
-                    <p class="period">2023 - 2026</p>
-                    <p><strong>Établissement :</strong> IUT de Lannions</p>
-                    <p><strong>Ville :</strong> Lannions</p>
-                    <p><strong>Description :</strong> Formation en trois ans axée sur le développement informatique
-                         avec parcours en data science et intelligence artificielle ainsi que développement d'applications. Acquisition de compétences en programmation, bases de données, machine learning et gestion de projet.</p>
-                    <p><strong>Compétences clés :</strong> Python, SQL, IA, Big Data, DevOps</p>
-                </div>
-
-                <div class="formation-card">
-                    <h3>Baccalauréat sciences et technologies de l'industrie et du développement durable</h3>
-                    <p class="period">2020 - 2023</p>
-                    <p><strong>Établissement :</strong> Lycée technologique Les Rimains</p>
-                    <p><strong>Ville :</strong> St Malo</p>
-                    <p><strong>Mention :</strong> bien</p>
-                    <p><strong>Spécialités :</strong> systèmes d'information et numérique</p>
-                </div>
-
-<!--             <div class="formation-card" style="border-left: 5px solid #ccc; background: #f0f0f0;">
-                    <h3>[Titre de la formation]</h3>
-                    <p class="period">[Période - ex: 2023 - 2024]</p>
-                    <p><strong>Établissement :</strong> [Nom de l'établissement]</p>
-                    <p><strong>Ville :</strong> [Ville]</p>
-                    <p><strong>Description :</strong> [Description de la formation, ce que vous avez appris]</p>
-                    <p><strong>Compétences acquises :</strong> [Liste des compétences]</p>
-                    
-                   
-                </div>
-                
-                --> 
-            </div>
-        </div>
-
-        <!-- Page Contact -->
-        <div id="contact" class="page">
-            <div class="section">
-                <h2>Contact</h2>
-                <p style="margin-bottom: 2rem;">N'hésitez pas à me contacter pour échanger sur mes projets 
-                    ou discuter d'opportunités.</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <img src="./img/gmail.png" width="20px" height="20px">
-                        <strong>Email :</strong>
-                        <span>ceschiabasile@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <img src="./img/linkedin.png" width="20px" height="20px">
-                        <strong>LinkedIn :</strong>
-                        <a href="https://www.linkedin.com/in/basile-ceschia-783225300/" target="_blank" style="color: #667eea;">linkedin.com/basile-ceschia</a>
-                    </div>
-                    <div class="contact-item">
-                        <img src="./img/github.png" width="20px" height="20px">
-                        <strong>GitHub :</strong>
-                        <a href="https://github.com/basile207" target="_blank" style="color: #667eea;">github.com/basile207</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>Localisation :</strong>
-                        <span>St Malo - Lannions</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <script>
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-            
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-                window.scrollTo(0, 0);
-                
-                setTimeout(() => {
-                    const skillBars = targetPage.querySelectorAll('.skill-level-fill');
-                    skillBars.forEach(bar => {
-                        const targetWidth = bar.getAttribute('data-width');
-                        bar.style.width = targetWidth + '%';
-                    });
-                }, 100);
-            }
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <span class="section-label reveal">À propos</span>
+        <h2 class="section-title reveal">Un profil <span class="highlight">polyvalent</span> et motivé</h2>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>
+                    Actuellement en troisième année de BUT Informatique à l'IUT de Lannion, 
+                    je me spécialise en <strong>Data Science</strong> et <strong>Intelligence Artificielle</strong>. 
+                    Mon parcours m'a permis de développer des compétences solides en développement web, 
+                    gestion de bases de données et machine learning.
+                </p>
+                <p>
+                    Fort d'une expérience de stage international en Allemagne chez Verbund Pflegehilfe, 
+                    j'ai acquis une véritable aisance dans le travail en équipe Agile et le développement 
+                    d'interfaces utilisateur performantes. Je suis persévérant, assidu et toujours 
+                    à la recherche de nouveaux défis.
+                </p>
+            </div>
+            <div class="info-cards reveal">
+                <div class="info-card">
+                    <div class="icon">📍</div>
+                    <div class="label">Localisation</div>
+                    <div class="value">Lannion / St Malo</div>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🎓</div>
+                    <div class="label">Formation</div>
+                    <div class="value">BUT Informatique 3A</div>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🚗</div>
+                    <div class="label">Mobilité</div>
+                    <div class="value">Permis de conduire</div>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🌍</div>
+                    <div class="label">Langues</div>
+                    <div class="value">FR · EN · DE</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
+        <span class="section-label reveal">Compétences</span>
+        <h2 class="section-title reveal">Mon <span class="highlight">arsenal</span> technique</h2>
+        <div class="skills-grid">
+            <div class="skill-category reveal">
+                <div class="skill-category-header">
+                    <div class="skill-category-icon">💻</div>
+                    <div class="skill-category-name">Langages</div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C / C++ / C#</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Bash</span>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <div class="skill-category-header">
+                    <div class="skill-category-icon">🌐</div>
+                    <div class="skill-category-name">Web</div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">csHTML</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Bootstrap</span>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <div class="skill-category-header">
+                    <div class="skill-category-icon">🗄️</div>
+                    <div class="skill-category-name">Base de données</div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">UML</span>
+                    <span class="skill-tag">psycopg2</span>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <div class="skill-category-header">
+                    <div class="skill-category-icon">🤖</div>
+                    <div class="skill-category-name">Data Science & IA</div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Matplotlib</span>
+                    <span class="skill-tag">PyTorch</span>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <div class="skill-category-header">
+                    <div class="skill-category-icon">⚙️</div>
+                    <div class="skill-category-name">Outils & DevOps</div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git / GitHub</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Nginx</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">VS Code</span>
+                </div>
+            </div>
+            <div class="skill-category reveal">
+                <div class="skill-category-header">
+                    <div class="skill-category-icon">🎨</div>
+                    <div class="skill-category-name">Logiciels</div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Unity</span>
+                    <span class="skill-tag">Blender</span>
+                    <span class="skill-tag">Eclipse</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">JIRA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Languages -->
+        <h3 class="section-title reveal" style="font-size:1.5rem; margin-top:3rem;">Langues</h3>
+        <div class="languages-row reveal">
+            <div class="lang-card">
+                <div class="lang-name">🇫🇷 Français</div>
+                <div class="lang-level">Langue natale</div>
+                <div class="lang-bar"><div class="lang-fill" data-width="100"></div></div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-name">🇬🇧 Anglais</div>
+                <div class="lang-level">Fluide</div>
+                <div class="lang-bar"><div class="lang-fill" data-width="80"></div></div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-name">🇩🇪 Allemand</div>
+                <div class="lang-level">Base solide</div>
+                <div class="lang-bar"><div class="lang-fill" data-width="50"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="container">
+        <span class="section-label reveal">Expérience</span>
+        <h2 class="section-title reveal">Mon <span class="highlight">parcours</span> professionnel</h2>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <span class="timeline-date">Mai 2025 — Juil. 2025</span>
+                <h3 class="timeline-title">Stage Développement UI/UX</h3>
+                <p class="timeline-company">📍 Verbund Pflegehilfe — Mayence, Allemagne</p>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Développement de tests A/B frontend pour améliorer l'expérience utilisateur</li>
+                        <li>Travail en méthodologie Agile : Sprint, Daily, Retro Meeting, Team building</li>
+                        <li>Utilisation d'outils collaboratifs : Azure, BlobStorage</li>
+                        <li>Technologies : csHTML, SCSS, JavaScript</li>
+                    </ul>
+                </div>
+                <div class="timeline-techs">
+                    <span class="timeline-tech">csHTML</span>
+                    <span class="timeline-tech">SCSS</span>
+                    <span class="timeline-tech">JavaScript</span>
+                    <span class="timeline-tech">Azure</span>
+                    <span class="timeline-tech">Agile</span>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <span class="timeline-date">2025 — 2026</span>
+                <h3 class="timeline-title">Système de Recommandation Musicale</h3>
+                <p class="timeline-company">📍 3A BUT Informatique — IUT Lannion</p>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Conception détaillée UML et implantation d'une base de données relationnelle PostgreSQL</li>
+                        <li>Implémentation d'algorithmes de recommandation User-Based et Item-Based</li>
+                        <li>Génération de recommandations personnalisées à partir de 100 000 morceaux</li>
+                        <li>Développement d'une API pour la consultation des recommandations</li>
+                    </ul>
+                </div>
+                <div class="timeline-techs">
+                    <span class="timeline-tech">Python</span>
+                    <span class="timeline-tech">PostgreSQL</span>
+                    <span class="timeline-tech">Scikit-learn</span>
+                    <span class="timeline-tech">Pandas</span>
+                    <span class="timeline-tech">psycopg2</span>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <span class="timeline-date">2024 — 2025</span>
+                <h3 class="timeline-title">Développement d'un Site Web Dynamique</h3>
+                <p class="timeline-company">📍 2A BUT Informatique — IUT Lannion</p>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Développement et conception en équipe avec design de la charte graphique et maquettage Figma</li>
+                        <li>Travail en méthode Agile, SCRUM avec GitHub et JIRA</li>
+                        <li>Site web en HTML, CSS, PHP et JavaScript</li>
+                        <li>Base de données PostgreSQL — Rôle de Product Owner durant un Sprint</li>
+                    </ul>
+                </div>
+                <div class="timeline-techs">
+                    <span class="timeline-tech">HTML/CSS</span>
+                    <span class="timeline-tech">PHP</span>
+                    <span class="timeline-tech">JavaScript</span>
+                    <span class="timeline-tech">PostgreSQL</span>
+                    <span class="timeline-tech">Figma</span>
+                    <span class="timeline-tech">SCRUM</span>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <span class="timeline-date">Depuis 2020</span>
+                <h3 class="timeline-title">Projets Personnels</h3>
+                <p class="timeline-company">📍 Saint-Malo / Lannion</p>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Apprentissage autodidacte de Unity, Blender et Eclipse</li>
+                        <li>Création de contenus digitaux et exploration de nouvelles technologies</li>
+                    </ul>
+                </div>
+                <div class="timeline-techs">
+                    <span class="timeline-tech">Unity</span>
+                    <span class="timeline-tech">Blender</span>
+                    <span class="timeline-tech">Eclipse</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+        <span class="section-label reveal">Projets</span>
+        <h2 class="section-title reveal">Ce que j'ai <span class="highlight">construit</span></h2>
+        <div class="projects-grid">
+            <div class="project-card reveal" onclick="toggleProject(this)">
+                <div class="project-number">01</div>
+                <h3 class="project-title">🎵 Système de Recommandation Musicale</h3>
+                <p class="project-desc">
+                    Développement d'un algorithme de recommandation utilisant des modèles 
+                    user-based et item-based pour suggérer des musiques personnalisées à partir 
+                    d'une base de 100 000 morceaux.
+                </p>
+                <div class="timeline-techs">
+                    <span class="timeline-tech">Python</span>
+                    <span class="timeline-tech">Scikit-learn</span>
+                    <span class="timeline-tech">PostgreSQL</span>
+                    <span class="timeline-tech">Pandas</span>
+                    <span class="timeline-tech">FastAPI</span>
+                </div>
+                <button class="project-expand">Voir les détails ↓</button>
+                <div class="project-details">
+                    <h4>Objectifs</h4>
+                    <ul>
+                        <li>Créer un algorithme de recommandation basé sur les données utilisateur</li>
+                        <li>Analyser les features audio des morceaux (tempo, tonalité, énergie)</li>
+                        <li>Développer une interface utilisateur et une API</li>
+                    </ul>
+                    <h4>Méthodologie</h4>
+                    <p>Sprints de trois semaines en équipe. Collecte, nettoyage et analyse des données, 
+                    puis développement de modèles user-based, item-based et hybride.</p>
+                    <h4>Résultats</h4>
+                    <ul>
+                        <li>100 000 morceaux analysés</li>
+                        <li>Temps de réponse moyen de 3 secondes</li>
+                        <li>Modèles optimisés et performants</li>
+                    </ul>
+                    <h4>Compétences mobilisées</h4>
+                    <p>Réaliser · Optimiser · Administrer · Collaborer</p>
+                </div>
+            </div>
+            <div class="project-card reveal" onclick="toggleProject(this)">
+                <div class="project-number">02</div>
+                <h3 class="project-title">🌐 Site Web Dynamique</h3>
+                <p class="project-desc">
+                    Conception, développement et hébergement d'un site web dynamique complet 
+                    avec système d'authentification, gestion de contenu et base de données relationnelle.
+                </p>
+                <div class="timeline-techs">
+                    <span class="timeline-tech">HTML/CSS</span>
+                    <span class="timeline-tech">JavaScript</span>
+                    <span class="timeline-tech">PHP</span>
+                    <span class="timeline-tech">PostgreSQL</span>
+                    <span class="timeline-tech">Docker</span>
+                </div>
+                <button class="project-expand">Voir les détails ↓</button>
+                <div class="project-details">
+                    <h4>Fonctionnalités</h4>
+                    <ul>
+                        <li>Authentification avec refresh tokens</li>
+                        <li>CRUD complet pour gestion de contenu</li>
+                        <li>Interface d'administration avec tableaux de bord</li>
+                        <li>Upload et traitement de fichiers</li>
+                        <li>Recherche et filtres avancés</li>
+                        <li>Responsive design adaptatif</li>
+                    </ul>
+                    <h4>Architecture</h4>
+                    <p>Méthodologie Agile avec SCRUM, sprints cadencés, Product Owner et daily meetings.
+                    Déploiement avec Docker et Nginx en reverse proxy avec SSL.</p>
+                    <h4>Compétences mobilisées</h4>
+                    <p>Réaliser · Optimiser · Administrer · Gérer · Collaborer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+    <div class="container">
+        <span class="section-label reveal">Formation</span>
+        <h2 class="section-title reveal">Mon <span class="highlight">parcours</span> académique</h2>
+        <div class="education-cards">
+            <div class="education-card reveal">
+                <div class="education-year">2023 — 2026</div>
+                <div class="education-info">
+                    <h3>BUT Informatique — Parcours Data & IA</h3>
+                    <div class="education-school">IUT de Lannion</div>
+                    <p class="education-desc">
+                        Bachelor Universitaire de Technologie en Informatique. 
+                        Spécialisation Data Science et Intelligence Artificielle. 
+                        Compétences clés : Python, SQL, IA, Big Data, DevOps.
+                    </p>
+                    <div class="timeline-techs" style="margin-top:1rem">
+                        <span class="timeline-tech">Python</span>
+                        <span class="timeline-tech">SQL</span>
+                        <span class="timeline-tech">Machine Learning</span>
+                        <span class="timeline-tech">Big Data</span>
+                        <span class="timeline-tech">DevOps</span>
+                    </div>
+                </div>
+            </div>
+            <div class="education-card reveal">
+                <div class="education-year">2020 — 2023</div>
+                <div class="education-info">
+                    <h3>Baccalauréat STI2D</h3>
+                    <div class="education-school">Lycée technologique Les Rimains — Saint-Malo</div>
+                    <p class="education-desc">
+                        Sciences et Technologies de l'Industrie et du Développement Durable.<br>
+                        <strong>Mention Bien</strong> · Spécialité : Systèmes d'Information et Numérique.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <span class="section-label reveal">Contact</span>
+        <h2 class="section-title reveal">Travaillons <span class="highlight">ensemble</span></h2>
+        <div class="contact-grid">
+            <div class="contact-items reveal">
+                <a href="mailto:ceschiabasile@gmail.com" class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">ceschiabasile@gmail.com</div>
+                    </div>
+                </a>
+                <a href="tel:+33603097662" class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <div class="contact-label">Téléphone</div>
+                        <div class="contact-value">+33 06 03 09 76 62</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/basile-ceschia-783225300/" target="_blank" class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value"><span style="color:var(--accent)">linkedin.com/basile-ceschia</span></div>
+                    </div>
+                </a>
+                <a href="https://github.com/basile207" target="_blank" class="contact-item">
+                    <div class="contact-icon">🐙</div>
+                    <div>
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value"><span style="color:var(--accent)">github.com/basile207</span></div>
+                    </div>
+                </a>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <div class="contact-label">Adresse</div>
+                        <div class="contact-value">15, Rue Jean Savidan — Lannion 22300</div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-message reveal">
+                <p>
+                    Je suis actuellement à la recherche d'un <strong>stage de 14 semaines</strong> 
+                    en Data, Intelligence Artificielle ou Développement Web, 
+                    disponible <strong>dès le 23 Mars</strong>. 
+                    N'hésitez pas à me contacter !
+                </p>
+                <a href="mailto:ceschiabasile@gmail.com" class="btn btn-primary">
+                    📩 Envoyer un email
+                </a>
+                <div style="margin-top:2rem;">
+                    <a href="CV_Basile_CESCHIA.pdf" target="_blank" class="btn btn-outline" download>
+                        📄 Télécharger mon CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>© 2026 Basile CESCHIA — Portfolio</p>
+    </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile nav toggle
+document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Animate language bars
+            entry.target.querySelectorAll('.lang-fill').forEach(bar => {
+                const w = bar.getAttribute('data-width');
+                setTimeout(() => { bar.style.width = w + '%'; }, 200);
+            });
         }
+    });
+}, { threshold: 0.1 });
 
-        window.addEventListener('load', () => {
-            const homePage = document.getElementById('accueil');
-            if (homePage && homePage.classList.contains('active')) {
-                const skillBars = homePage.querySelectorAll('.skill-level-fill');
-                skillBars.forEach(bar => {
-                    const targetWidth = bar.getAttribute('data-width');
-                    bar.style.width = targetWidth + '%';
-                });
-            }
-        });
-    </script>
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Project details toggle
+function toggleProject(card) {
+    const details = card.querySelector('.project-details');
+    const btn = card.querySelector('.project-expand');
+    if (details.classList.contains('open')) {
+        details.classList.remove('open');
+        btn.textContent = 'Voir les détails ↓';
+    } else {
+        details.classList.add('open');
+        btn.textContent = 'Masquer les détails ↑';
+    }
+}
+
+// Smooth scroll polyfill for hash links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
+
 </body>
-
 </html>

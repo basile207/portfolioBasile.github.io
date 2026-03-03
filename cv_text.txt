@@ -1,0 +1,53 @@
+                                  Basile CESCHIA
+                          Étudiant en informatique
+                                 Cherche stage 14 semaines en Data / Intelligence Artificielle / Web
+                              Dès le 23 Mars
+
+                           Diplômes et Formations
+ ceschiabasile@gmail.com
+                             BUT informatique 15, Rue Jean Savidan,
+   Lannion 22300                    Depuis 2023 IUT de Lannion
+ Permis de conduire                  Bachelier universitaire Technologique 2023-2026
+  Lannion - St Malo                  Baccalauréat sciences et technologies de l'industrie et du
+ +33 06 03 09 76 62               développement durable
+                               De 2020 à 2023 Lycée technologique Les Rirmains, St Malo
+Informatique                      Mentions bien. 2020 - 2023
+Logiciel                       Expériences professionnelles
+  Python
+                                Développement d'un système de recommandation musicale   Git
+                               De 2025 à 2026 3A BUT informatique - IUT Lannion Lannion  Docker
+  C / C++ / C#                             Création détaillée UML, peuplement Python, psycopg2 et
+   Java                                    implantation d'une infrastructure de base de données relationnelle
+                                         robuste Postgre, mettant en avant la structure et l'efficacité.Base de données
+                                        Implémentation d’algorithmes de recommandation : User-Based et  SQL
+                                     Item-Based   PostgreSQL
+                                        Génération de recommandations personnalisées  UML
+                                     Développement d’une API pour la consultation des  psycopg2
+                                     recommandations
+Web
+                                    Stage développement UI/UX  HTML5
+                               De mai 2025 à juillet 2025 Verbund Pflegehilfe Mayence - Allemagne  CSS3
+   React                           Développement de test A/B frontend dans l'objectif d'améliorer
+  csHTML                               l'expérience utilisateur en cHTML, SCSS, JS.
+   fastAPI                                Participation au sein d'une équipe en méthodologie Agile,
+                                       Sprint/Daily/Retro Meeting, Team building.
+Langues                                   Utilisations d'outils collaboratifs. Azur, BlobStorage.
+                                Développement et hébergement d'un site web dynamiqueFrançais
+Langue natale                    De 2024 à 2025 2A BUT informatique - IUT Lannion Lannion
+                                  Développement et conception en équipe incluant le design de laAnglais
+                                        charte graphique et le maquettage avec FIGMA.Fluide
+                                              Travail en équipe avec la méthode Agile, SCRUM, GitHub et JIRA.
+Allemand                                              Site web développé en HTML, CSS, PHP et JavaScript.
+Base Solide                                  Développement et exploitation d'une base de données avec
+                                    PostgreSQL.
+Atouts                               Rôle de Product Owner durant un Sprint.
+Persévérant                           Projets
+Assidu                              Depuis 2020 Personnels Saint-Malo Lannion
+Polyvalent                            Apprentissage en autodidacte à l'utilisation des applications Unity,
+                                      Blender, Eclipse.Dynamique
+                     Mon Portfolio
+Mes passions :
+                                        https://basile207.github.io/portfolioBasile.github.io/
+Contenu Digital
+Voyager
+Cuisiner
